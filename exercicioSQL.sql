@@ -7,6 +7,12 @@ FROM users
 INNER JOIN cities ON cities.id=users."cityId"
 WHERE cities.name='Rio de Janeiro';
 
+-- ### Questão 2:Utilizando umas *query*, 
+-- obtenha todos os depoimentos (`testimonials`) cadastrados, incluindo o nome do remetente e do destinatário.
+SELECT testimonials.id, writer.name As writer, recipient.name As recipient, testimonials.message FROM testimonials
+JOIN users writer on writer.id = testimonials."writerId"
+JOIN users recipient on recipient.id = testimonials."recipientId";
+
 -- ### Questão 3:Utilizando uma *query*, 
 -- obtenha todos os cursos (`courses`) que o usuário com id **30** já finalizou,
 -- incluindo o nome da escola. 
