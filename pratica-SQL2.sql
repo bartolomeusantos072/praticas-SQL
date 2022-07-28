@@ -29,7 +29,7 @@ SELECT MAX(salary) AS "maximumSalary", roles.name AS "role"
 FROM jobs 
 JOIN roles ON roles.id=jobs."roleId" and jobs.active=true
 GROUP BY roles.name
-ORDER BY roles.name ASC;
+ORDER BY maximumSalary ASC;
 
 -- ### Desafio Bônus
 -- Utilizando uma *query*, obtenha 
