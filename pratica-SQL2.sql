@@ -39,7 +39,11 @@ ORDER BY maximumSalary ASC;
 
 SELECT schools.name AS school, courses.name AS cousers, COUNT("userId") as studentsCount, educations.status AS role  
 FROM educations
-JOIN schools on schools.id=educations."userId" AND educations.status!='time off'
+JOIN schools on schools.id=educations."userId" AND educations.status<>'time off'
 JOIN courses on courses.id=educations."courseId"
-GROUP BY educations."userId", courses.name, schools.name, educations.status
-ORDER BY educations."userId" ASC LIMIT 3;
+GROUP BY schools.id, courses.name, educations."userId",   educations.status
+ORDER BY educations."userId" DESC
+LIMIT 3;
+
+SELECT count("userId") from educations
+join courses on courses.id = educations.courses
